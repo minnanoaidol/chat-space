@@ -1,0 +1,17 @@
+.side-bar
+  .side-bar__user-name
+    .side-bar__user-name__top-items
+      .side-bar__user-name__top-items__name Junya
+      %ul.side-bar__user-name__top-items__menu-list
+        %li.side-bar__user-name__top-items__menu-list__new-group
+        = link_to "#", class: "btn" do
+          = icon('far', 'edit')
+        %li.side-bar__user-name__top-items__menu-list__edit-user
+        = link_to "#", class: "btn" do
+          = icon('fas', 'cog')
+
+  .side-bar__group-list
+    .side-bar__group-list__information
+      .side-bar__group-list__information__name Junya
+      .side-bar__group-list__information__message Hello
+ 
