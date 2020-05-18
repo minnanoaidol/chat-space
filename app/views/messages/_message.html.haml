@@ -1,0 +1,38 @@
+.main-chat
+  .main-chat__group-info
+    .main-chat__group-info__info
+      .main-chat__group-info__info__group-name
+        = @group.name
+        %ul.main-chat__group-info__info__member-name
+          Member:
+          - @group.users.each do |g|
+            %li.main-chat__group-info__info__member-name__member
+              = g.name
+    .main-chat__group-info__edit-btn 
+      = link_to edit_group_path(@group.id) do
+        Edit
+  .main-chat__message-list
+    - @group.messages.each do |m|
+      .main-chat__message-list__info
+        .main-chat__message-list__info__name
+          = m.user.name
+        .main-chat__message-list__info__date
+          = m.created_at
+      .main-chat__message-list__text
+        - if m.content.present?
+          = m.content
+        = image_tag m.image.url unless m.image.url.blank?
+
+  .main-chat__form
+    = form_for [@group, @message] do |f|
+      .main-chat__form__new-message
+        .main-chat__form__new-message__input
+          .main-chat__form__new-message__input__text-box
+            = f.text_field :content, placeholder: 'type a message', class: 'text-box'
+            .main-chat__form__new-message__input__image
+              = f.label :image do
+                = icon('far', 'image')
+              .main-chat__form__new-message__input__image__file
+                = f.file_field :image
+        .main-chat__form__new-message__submit-btn
+          = f.submit 'Send', class: 'input'

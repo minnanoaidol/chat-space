@@ -12,11 +12,11 @@
           = icon('fas', 'cog')
 
   .side-bar__group-list
-    .side-bar__group-list__information
-      .side-bar__group-list__information__name
-        - current_user.groups.each do |g|
-          = link_to edit_group_path(g.id) do 
+    - current_user.groups.each do |g|
+      .side-bar__group-list__information
+        = link_to group_messages_path(g) do 
+          .side-bar__group-list__information__name
             = g.name
-      .side-bar__group-list__information__message
-        メッセージはまだありません。
+          .side-bar__group-list__information__message
+            = g.show_last_message
  
