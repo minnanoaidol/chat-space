@@ -1,25 +1,2 @@
-.main-chat
-  .main-chat__group-info
-    .main-chat__group-info__info
-      .main-chat__group-info__info__group-name name
-      %ul.main-chat__group-info__info__member-name
-        %li.main-chat__group-info__info__member-name__member member name
-    .main-chat__group-info__edit-btn Edit
-  .main-chat__message-list
-    .main-chat__message-list__info
-      .main-chat__message-list__info__name Junya
-      .main-chat__message-list__info__date 2020/5/3
-    .main-chat__message-list__text Hello
-    .main-chat__message-list__info
-      .main-chat__message-list__info__name Junya
-      .main-chat__message-list__info__date 2020/5/4
-    .main-chat__message-list__text Good afternoon
-
-  .main-chat__form
-    .main-chat__form__new-message
-      %form.main-chat__form__new-message__input
-        %input{class: "main-chat__form__new-message__input__text-box", type: "text", placeholder: "type a message"}
-        %label{class: "main-chat__form__new-message__input__image"}
-          = icon('far', 'image')
-          %input{type: "file", class: "main-chat__form__new-message__input__image__file"}
-      .main-chat__form__new-message__submit-btn Send
+.messages
+  = render @message
