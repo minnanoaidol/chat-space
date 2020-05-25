@@ -22,6 +22,7 @@ $(function(){
              ${message.user_name}
            </div>
            <div class="main-chat__message-list__info__date">
+             ${message.created_at}
            </div>
          </div>
          <div class="main-chat__message-list__text">
