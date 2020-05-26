@@ -107,6 +107,8 @@ $sky-blue:#38aef0;
     background-color: #fafafa;
     height: $height_right;
     padding: 35px 40px;
+    overflow: scroll;
+
     &__info {
       padding-bottom: 12px;
       display: flex;
