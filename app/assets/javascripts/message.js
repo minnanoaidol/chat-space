@@ -2,30 +2,30 @@ $(function(){
   function buildHTML(message){
    if ( message.image ) {
      var html =
-      `<div class="main-chat__message-list__info">
-           <div class="main-chat__message-list__info__name">
+      `<div class=".main-chat__message-list__messages" data-message-id=${message.id}>
+           <div class="main-chat__message-list__messages__info__name">
              ${message.user_name}
            </div>
-           <div class="main-chat__message-list__info__date">
+           <div class="main-chat__message-list__messages__info__date">
              ${message.created_at}
            </div>
          </div>
-         <div class="main-chat__message-list__text">
+         <div class="main-chat__message-list__messages__text">
              ${message.content}
          </div>
          <img src=${message.image} >`
      return html;
    } else {
      var html =
-      `<div class="main-chat__message-list__info">
-           <div class="main-chat__message-list__info__name">
+      `<div class=".main-chat__message-list__messages" data-message-id=${message.id}>
+           <div class="main-chat__message-list__messages__info__name">
              ${message.user_name}
            </div>
-           <div class="main-chat__message-list__info__date">
+           <div class="main-chat__message-list__messages__info__date">
              ${message.created_at}
            </div>
          </div>
-         <div class="main-chat__message-list__text">
+         <div class="main-chat__message-list__messages__text">
              ${message.content}
          </div>`
      return html;
@@ -57,5 +57,31 @@ $('#new_message').on('submit', function(e){
   })
 
 })
-});
+var reloadMessages = function() {
+  var last_message_id = $('.main-chat__message-list__messages:last').data("message-id");
+  $.ajax({
+    url: "api/messages",
+    type: 'get',
+    dataType: 'json',
+    data: {id: last_message_id}
+  })
+  .done(function(messages) {
+    if (messages.length !== 0) {
+      var insertHTML = '';
+      $.each(messages, function(i, message) {
+        insertHTML += buildHTML(message);
+        $('.main-chat__message-list__messages:last').append(insertHTML);
+        $('.main-chat__message-list').animate({ scrollTop: $('.main-chat__message-list')[0].scrollHeight});
+      });
 
+    }
+  })
+  .fail(function() {
+    alert('error');
+  });
+};
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
+});
+  

@@ -13,15 +13,16 @@
         Edit
   .main-chat__message-list
     - @group.messages.each do |m|
-      .main-chat__message-list__info
-        .main-chat__message-list__info__name
-          = m.user.name
-        .main-chat__message-list__info__date
-          = m.created_at
-      .main-chat__message-list__text
-        - if m.content.present?
-          = m.content
-        = image_tag m.image.url unless m.image.url.blank?
+      .main-chat__message-list__messages{data: {message: {id: m.id} }}
+        .main-chat__message-list__messages__info
+          .main-chat__message-list__messages__info__name
+            = m.user.name
+          .main-chat__message-list__messages__info__date
+            = m.created_at
+        .main-chat__message-list__messages__text
+          - if m.content.present?
+            = m.content
+          = image_tag m.image.url unless m.image.url.blank?
 
   .main-chat__form
     = form_for [@group, @message] do |f|
