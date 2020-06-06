@@ -14,7 +14,7 @@
   .side-bar__group-list
     - current_user.groups.each do |g|
       .side-bar__group-list__information
-        = link_to group_messages_path(g) do 
+        = link_to group_messages_path(g), class: "no-underline" do 
           .side-bar__group-list__information__name
             = g.name
           .side-bar__group-list__information__message

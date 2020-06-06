@@ -21,7 +21,7 @@
             = m.created_at
         .main-chat__message-list__messages__text
           - if m.content.present?
-            = m.content
+            %p= m.content
           = image_tag m.image.url unless m.image.url.blank?
 
   .main-chat__form

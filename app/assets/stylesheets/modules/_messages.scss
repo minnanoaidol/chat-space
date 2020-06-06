@@ -75,6 +75,7 @@ $sky-blue:#38aef0;
     height: $height_top;
     padding: 0 40px;
     @include flex_space-between();
+    border-bottom: solid 1px #eee;
     &__info {
       margin-top: 35px;
       &__group-name {
@@ -187,4 +188,8 @@ $sky-blue:#38aef0;
 
 .main-chat__group-info__edit-btn a {
   color: $sky-blue;
+}
+
+.no-underline {
+  text-decoration: none !important;
 }

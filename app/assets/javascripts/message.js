@@ -2,32 +2,36 @@ $(function(){
   function buildHTML(message){
    if ( message.image ) {
      var html =
-      `<div class=".main-chat__message-list__messages" data-message-id=${message.id}>
-           <div class="main-chat__message-list__messages__info__name">
+      `<div class="main-chat__message-list__messages" data-message-id=${message.id}>
+        <div class="main-chat__message-list__messages__info">
+          <div class="main-chat__message-list__messages__info__name">
              ${message.user_name}
-           </div>
-           <div class="main-chat__message-list__messages__info__date">
+          </div>
+          <div class="main-chat__message-list__messages__info__date">
              ${message.created_at}
-           </div>
-         </div>
-         <div class="main-chat__message-list__messages__text">
+          </div>
+        </div>
+        <div class="main-chat__message-list__messages__text">
              ${message.content}
-         </div>
-         <img src=${message.image} >`
+        </div>
+        <img src=${message.image} >
+      </div>`
      return html;
    } else {
      var html =
-      `<div class=".main-chat__message-list__messages" data-message-id=${message.id}>
-           <div class="main-chat__message-list__messages__info__name">
-             ${message.user_name}
-           </div>
-           <div class="main-chat__message-list__messages__info__date">
-             ${message.created_at}
-           </div>
-         </div>
-         <div class="main-chat__message-list__messages__text">
-             ${message.content}
-         </div>`
+     `<div class="main-chat__message-list__messages" data-message-id=${message.id}>
+     <div class="main-chat__message-list__messages__info">
+       <div class="main-chat__message-list__messages__info__name">
+          ${message.user_name}
+       </div>
+       <div class="main-chat__message-list__messages__info__date">
+          ${message.created_at}
+       </div>
+     </div>
+     <div class="main-chat__message-list__messages__text">
+          ${message.content}
+     </div>
+   </div>`
      return html;
    };
  }
